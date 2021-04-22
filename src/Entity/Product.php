@@ -89,4 +89,19 @@ class Product
 
         return $this;
     }
+
+    /**
+     * Serialize the object to array
+     * @return array
+     */
+    public function toArray()
+    {
+        return [
+            "id" => $this->getId(),
+            "name" => $this->getName(),
+            "category" => $this->getCategory(),
+            "sku" => $this->getSku(),
+            "price" => $this->getPrice()
+        ];
+    }
 }

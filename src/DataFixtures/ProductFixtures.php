@@ -30,7 +30,7 @@ class ProductFixtures extends Fixture
     {
         $product30And15 = $this->createProduct(
             $this->faker->name,
-            $this->faker->numberBetween(1, 1000),
+            $this->faker->numberBetween(100, 100000),
             'boots',
             '000003'
         );
@@ -39,7 +39,7 @@ class ProductFixtures extends Fixture
         foreach (range(1, 20000) as $i) {
             $product = $this->createProduct(
                 $this->faker->name,
-                $this->faker->numberBetween(1, 1000),
+                $this->faker->numberBetween(100, 100000),
                 $this->faker->randomElement(['boots', 'shoes', 't-shirts', 'skirts']),
                 $this->faker->uuid
             );
@@ -54,7 +54,7 @@ class ProductFixtures extends Fixture
     {
         $product = new Product();
         $product->setName($name ?? $this->faker->name);
-        $product->setPrice($price ?? $this->faker->numberBetween(1, 1000));
+        $product->setPrice($price ?? $this->faker->numberBetween(100, 100000));
         $product->setCategory($category ?? $this->faker->randomElement(['boots', 'shoes', 't-shirts', 'skirts']));
         $product->setSku($sku ?? $this->faker->uuid);
 

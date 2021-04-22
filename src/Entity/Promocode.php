@@ -23,9 +23,14 @@ class Promocode
     private $percentage;
 
     /**
-     * @ORM\Column(type="array", nullable=true)
+     * @ORM\Column(type="string", length=255)
      */
-    private $rule = [];
+    private $field;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $value;
 
     public function getId(): ?int
     {
@@ -44,14 +49,26 @@ class Promocode
         return $this;
     }
 
-    public function getRule(): ?array
+    public function getField(): ?string
     {
-        return $this->rule;
+        return $this->field;
     }
 
-    public function setRule(?array $rule): self
+    public function setField(string $field): self
     {
-        $this->rule = $rule;
+        $this->field = $field;
+
+        return $this;
+    }
+
+    public function getValue(): ?string
+    {
+        return $this->value;
+    }
+
+    public function setValue(string $value): self
+    {
+        $this->value = $value;
 
         return $this;
     }

@@ -3,8 +3,10 @@
 namespace App\Repository;
 
 use App\Entity\Product;
+use App\Entity\Promocode;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\ORM\Query\Expr\Join;
 
 /**
  * @method Product|null find($id, $lockMode = null, $lockVersion = null)
@@ -19,32 +21,26 @@ class ProductRepository extends ServiceEntityRepository
         parent::__construct($registry, Product::class);
     }
 
-    // /**
-    //  * @return Product[] Returns an array of Product objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    /**
+     * Plaing SQL Query to join product with promocodes
+     *   SELECT prod.id, prod.name, MAX(promo.percentage) FROM `product` as prod
+     *   LEFT JOIN `promocode` as promo
+     *   ON
+     *       ( promo.field='sku' AND promo.value=prod.sku ) OR
+     *       ( promo.field='category' AND promo.value=prod.category )
+     *   GROUP BY prod.id;
+     * @return \Doctrine\ORM\Query
+     */
+    public function findProductWithDiscount()
     {
-        return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('p.id', 'ASC')
-            ->setMaxResults(10)
+        return $this->createQueryBuilder('product')
+            ->select('product.id', 'product.sku', 'product.name', 'product.category',  'product.price', 'MAX(promocode.percentage) as percentage')
+            ->leftJoin(Promocode::class, 'promocode', Join::WITH,
+                "(promocode.field='sku' AND promocode.value=product.sku) OR 
+                (promocode.field='category' AND promocode.value=product.category)")
+            ->groupBy('product.id')
             ->getQuery()
-            ->getResult()
         ;
     }
-    */
 
-    /*
-    public function findOneBySomeField($value): ?Product
-    {
-        return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }
