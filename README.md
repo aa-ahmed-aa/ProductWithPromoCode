@@ -41,7 +41,7 @@ $ php ./vendor/bin/phpunit
     <img src="https://github.com/aa-ahmed-aa/ProductWithPromoCode/blob/master/1.png" alt="Coverage is awesome"/>
 </p>
 
-To Run the coverage in cli mode
+To generate coverage
 ```shell script
 $ php ./vendor/bin/phpunit --coverage-html coverage/html
 ```
