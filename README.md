@@ -1,15 +1,15 @@
 ## Description
 This is a simple explanation for a product and promocode demo
 
-### Explanation
+## Explanation
 we have two tables one for Products and PromoCodes and we will join the two tables to get the product prices according to promocode woth the high weight
 
-### Requiremets
+## Requiremets
 - php7.4 (with xdebug enabled - optional for running the code coverage)
 - symfony cli
 - composer
 
-### Install
+## Install
 ```shell script
 $ cp .env.example .env
 $ php bin/console doctrine:database:create --env=dev
@@ -19,12 +19,12 @@ $ symfony server:start
 ```
 Endpoint
 
-> https://localhost:8000/product?page=1&limit=LIMIT
+> https://localhost:8000/products?page=1&limit=10
 
-Replace the limit with the imit you want  
+To Test the speed of the fetching increase the limit  
 
 
-### Testing
+## Testing
 Before you start
 ```shell script
 $ php bin/console doctrine:database:create --env=test
@@ -36,7 +36,7 @@ to run the tests
 $ php ./vendor/bin/phpunit
 ```
 
-### Coverage
+## Coverage
 <p align="center">
     <img src="https://github.com/aa-ahmed-aa/ProductWithPromoCode/blob/master/1.png" alt="Coverage is awesome"/>
 </p>
