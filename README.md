@@ -1,5 +1,5 @@
 ## Description
-this is a simple explanation for a product and promocode demo
+This is a simple explanation for a product and promocode demo
 
 ### Explanation
 we have two tables one for Products and PromoCodes and we will join the two tables to get the product prices according to promocode woth the high weight
