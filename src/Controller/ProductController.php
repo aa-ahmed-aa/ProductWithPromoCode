@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Service\ProductService;
-use App\Traits\ProductParseResponceTrait;
+use App\Traits\ProductParseResponseTrait;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -11,7 +11,8 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ProductController extends AbstractController
 {
-    use ProductParseResponceTrait;
+    use ProductParseResponseTrait;
+
     /** @var ProductService */
     protected $productService;
 

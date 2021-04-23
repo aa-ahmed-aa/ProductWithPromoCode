@@ -29,18 +29,26 @@ class ProductRepository extends ServiceEntityRepository
      *       ( promo.field='sku' AND promo.value=prod.sku ) OR
      *       ( promo.field='category' AND promo.value=prod.category )
      *   GROUP BY prod.id;
+     * @param null $criteria
      * @return \Doctrine\ORM\Query
      */
-    public function findProductWithDiscount()
+    public function findProductWithDiscount($criteria = null)
     {
-        return $this->createQueryBuilder('product')
+        $query = $this->createQueryBuilder('product')
             ->select('product.id', 'product.sku', 'product.name', 'product.category',  'product.price', 'MAX(promocode.percentage) as percentage')
             ->leftJoin(Promocode::class, 'promocode', Join::WITH,
                 "(promocode.field='sku' AND promocode.value=product.sku) OR 
                 (promocode.field='category' AND promocode.value=product.category)")
-            ->groupBy('product.id')
-            ->getQuery()
-        ;
+            ->groupBy('product.id');
+
+        if(!empty($criteria)) {
+            foreach ($criteria as $key => $value) {
+                $query->andWhere("product.{$key} = :{$key}")
+                ->setParameter($key, $value);
+            }
+        }
+
+        return $query->getQuery();
     }
 
 }

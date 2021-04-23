@@ -21,11 +21,13 @@ class PromocodeFixtures extends Fixture
     {
         $promocode30 = new Promocode();
         $promocode30->setPercentage(30);
-        $promocode30->setRule(['category' => 'boots']);
+        $promocode30->setField('category');
+        $promocode30->setValue('boots');
 
         $promocode15 = new Promocode();
         $promocode15->setPercentage(15);
-        $promocode15->setRule(['sku' => '000003']);
+        $promocode15->setField('sku');
+        $promocode15->setValue('000003');
 
         $manager->persist($promocode30);
         $manager->persist($promocode15);

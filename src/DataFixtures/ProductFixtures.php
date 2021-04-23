@@ -29,8 +29,8 @@ class ProductFixtures extends Fixture
     public function load(ObjectManager $manager)
     {
         $product30And15 = $this->createProduct(
-            $this->faker->name,
-            $this->faker->numberBetween(100, 100000),
+            "BV Lean leather ankle boots",
+            89000,
             'boots',
             '000003'
         );

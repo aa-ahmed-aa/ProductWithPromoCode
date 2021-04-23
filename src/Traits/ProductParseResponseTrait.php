@@ -4,7 +4,7 @@
 namespace App\Traits;
 
 
-trait ProductParseResponceTrait
+trait ProductParseResponseTrait
 {
     /**
      * @param $products
