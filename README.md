@@ -39,17 +39,13 @@ $ docker exec -it mythresa_php bash
    > php bin/console doctrine:fixture:load --env=test --no-interaction
    > php ./vendor/bin/phpunit
 ```
-to run the tests
-```shell script
-$ php ./vendor/bin/phpunit
-```
 
 ## Coverage
 <p align="center">
-    <img src="https://github.com/aa-ahmed-aa/ProductWithPromoCode/blob/master/1.png" alt="Coverage is awesome"/>
+    <img src="https://github.com/aa-ahmed-aa/ProductWithPromoCode/blob/master/symfony/1.png" alt="Coverage is awesome"/>
 </p>
 
-To generate coverage
+To generate coverage inside the mythresa_php image run this command
 ```shell script
 $ php ./vendor/bin/phpunit --coverage-html coverage/html
 ```
