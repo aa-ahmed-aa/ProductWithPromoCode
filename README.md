@@ -5,18 +5,23 @@ This is a simple explanation for a product and promocode demo
 we have two tables one for Products and PromoCodes and we will join the two tables to get the product prices according to promocode woth the high weight
 
 ## Requiremets
-- php7.4 (with xdebug enabled - optional for running the code coverage)
-- symfony cli
-- composer
+- docker
 
-## Install
+## Technology Stack
+- Php7.4 (with xdebug enabled - optional for running the code coverage)
+- Symfony cli
+- Composer
+- Docker
+
+## Install With Docker
 ```shell script
-$ cp .env.example .env
-$ php bin/console doctrine:database:create --env=dev
-$ php bin/console doctrine:schema:update --force --env=dev
-$ php bin/console doctrine:fixture:load --env=dev --no-interaction
-$ symfony server:start
+$ docker-compose up
+$ docker exec -it mythresa_php bash
+   > php bin/console doctrine:database:create --env=dev
+   > php bin/console doctrine:schema:update --force --env=dev
+   > php bin/console doctrine:fixture:load --env=dev --no-interaction
 ```
+
 Endpoint
 
 > https://localhost:8000/products?page=1&limit=10
@@ -27,9 +32,12 @@ To Test the speed of the fetching increase the limit
 ## Testing
 Before you start
 ```shell script
-$ php bin/console doctrine:database:create --env=test
-$ php bin/console doctrine:schema:update --force --env=test
-$ php bin/console doctrine:fixture:load --env=test --no-interaction
+$ docker-compose up
+$ docker exec -it mythresa_php bash
+   > php bin/console doctrine:database:create --env=test
+   > php bin/console doctrine:schema:update --force --env=test
+   > php bin/console doctrine:fixture:load --env=test --no-interaction
+   > php ./vendor/bin/phpunit
 ```
 to run the tests
 ```shell script

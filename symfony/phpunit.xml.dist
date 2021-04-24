@@ -14,7 +14,7 @@
     <ini name="error_reporting" value="-1"/>
     <server name="APP_ENV" value="test" force="true"/>
     <server name="SHELL_VERBOSITY" value="-1"/>
-    <env name="DATABASE_URL" value="mysql://root:ahmedkhaled@127.0.0.1:3306/mythresa_%kernel.environment%?serverVersion=5.7"/>
+    <env name="DATABASE_URL" value="mysql://root:${MYSQL_ROOT_PASSWORD}@mythresa_mysql:3306/${MYSQL_DATABASE}_%kernel.environment%"/>
   </php>
   <testsuites>
     <testsuite name="Project Test Suite">

@@ -1,0 +1,43 @@
+version: '3.7'
+services:
+  database:
+    container_name: mythresa_mysql
+    image: 'mysql:latest'
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+    ports:
+      - '3306'
+    networks:
+      - symfony
+  php:
+    container_name: mythresa_php
+    build:
+      context: .
+      dockerfile: docker/php/Dockerfile
+      args:
+        TIMEZONE: Europe/Madrid
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+    volumes:
+      - ./symfony/:/var/www/symfony/
+    networks:
+      - symfony
+  nginx:
+    container_name: mythresa_nginx
+    build:
+      context: .
+      dockerfile: docker/nginx/Dockerfile
+    volumes:
+      - ./symfony/:/var/www/symfony/
+    ports:
+      - 8001:80
+    networks:
+      - symfony
+
+volumes:
+  db_app:
+
+networks:
+  symfony:
