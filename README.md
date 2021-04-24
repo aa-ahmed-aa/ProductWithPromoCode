@@ -18,6 +18,7 @@ We have two tables one for Products and PromoCodes and we will join the two tabl
 ```shell script
 $ docker-compose up --build
 $ docker exec -it mythresa_php bash
+   > composer install
    > php bin/console doctrine:database:create --env=dev
    > php bin/console doctrine:schema:update --force --env=dev
    > php bin/console doctrine:fixture:load --env=dev --no-interaction

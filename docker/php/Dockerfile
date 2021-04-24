@@ -42,6 +42,5 @@ RUN pecl install xdebug; \
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 RUN ["apt-get", "-y", "install", "nano"]
-RUN ["composer", "install"]
 
 WORKDIR /var/www/symfony
